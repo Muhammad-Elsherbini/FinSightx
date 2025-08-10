@@ -1,2 +1,8 @@
 streamlit
 pandas
+plotly
+numpy
+openai
+requests
+sqlalchemy
+psycopg2-binary
