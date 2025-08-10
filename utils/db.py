@@ -12,7 +12,7 @@ def get_connection():
             PWD={st.secrets.connections.fabric.password};
             Encrypt=yes;
             TrustServerCertificate=no;"""
-        
+        print(conn_str)
         return pyodbc.connect(conn_str)
     except Exception as e:
         st.error(f"Connection failed: {str(e)}")
