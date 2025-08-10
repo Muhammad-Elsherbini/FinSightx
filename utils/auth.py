@@ -13,7 +13,7 @@ def login():
     if st.button("Login"):
         if ((users['username'] == username) & (users['password'] == password)).any():
             st.session_state["logged_in"] = True
-            st.experimental_rerun()
+            #st.experimental_rerun()
         else:
             st.error("Invalid credentials")
 
