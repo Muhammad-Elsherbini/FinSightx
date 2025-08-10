@@ -1,5 +1,5 @@
 import pandas as pd
-import pyodbc
+import pymssql
 import streamlit as st
 
 def get_connection():
@@ -14,18 +14,13 @@ def get_connection():
         username = st.secrets["fabric"]["username"]
         password = st.secrets["fabric"]["password"]
         driver = "{ODBC Driver 18 for SQL Server}"
-
-        connection_string = (
-            f"DRIVER={driver};"
-            f"SERVER={server};"
-            f"DATABASE={database};"
-            f"UID={username};"
-            f"PWD={password};"
-            "Authentication=ActiveDirectoryPassword;"
-            "Encrypt=yes;"
-            "TrustServerCertificate=no;"  # Recommended: set to 'no' and ensure TLS
+        conn = pymssql.connect(
+            server=server,
+            user=user,
+            password=password,
+            database=database,
+            as_dict=False  # or True if you want dict rows
         )
-        print('this is the connstring:',connection_string)
         conn = pyodbc.connect(connection_string)
         st.success("✅ Connected to Fabric Warehouse!", icon="✅")
         return conn
