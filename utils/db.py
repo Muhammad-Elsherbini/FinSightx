@@ -10,7 +10,7 @@ def get_connection():
     try:
         # Load secrets
         server = st.secrets["fabric"]["server"]
-        database = st.secrets["fabric"]["database"]
+        database = "l23jvmddsbrerl5c25nljc52oq-3dyzqrdrcf7uxgalftx4qvmqza.datawarehouse.fabric.microsoft.com" #st.secrets["fabric"]["database"]
         username = st.secrets["fabric"]["username"]
         password = st.secrets["fabric"]["password"]
         conn = pymssql.connect(
