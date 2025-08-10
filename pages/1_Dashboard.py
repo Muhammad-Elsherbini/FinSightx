@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 from utils.db import run_query
 
@@ -26,5 +24,6 @@ if st.button("Load Data"):
         			fin.[VIEW_ID],
         			vw.VIEW_LABEL;"""
     """
+    
     df = run_query(query)
     st.dataframe(df)
