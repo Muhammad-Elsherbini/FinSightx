@@ -13,7 +13,6 @@ def get_connection():
         database = st.secrets["fabric"]["database"]
         username = st.secrets["fabric"]["username"]
         password = st.secrets["fabric"]["password"]
-        driver = "{ODBC Driver 18 for SQL Server}"
         conn = pymssql.connect(
             server=server,
             user=user,
