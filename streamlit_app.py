@@ -1,46 +1,62 @@
-import altair as alt
-import numpy as np
-import pandas as pd
+# app.py
 import streamlit as st
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+import pandas as pd
+import numpy as np
+
+# -----------------------
+# Page Config
+# -----------------------
+st.set_page_config(
+    page_title="FinSight",
+    page_icon="📊",
+    layout="wide"
 )
 
+# -----------------------
+# Title & Intro
+# -----------------------
+st.title("📊 FinSight – Financial Insights Dashboard")
+st.markdown("""
+Welcome to **FinSight**, your interactive platform for exploring and analyzing financial data.
+Upload your dataset, and we'll help you visualize trends, performance metrics, and actionable insights.
+""")
 
+# -----------------------
+# File Upload
+# -----------------------
+uploaded_file = st.file_uploader("Upload a CSV or Excel file", type=["csv", "xlsx"])
 
-"""
-# Welcome to Streamlit!
+if uploaded_file is not None:
+    # Read file
+    if uploaded_file.name.endswith(".csv"):
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_excel(uploaded_file)
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+    st.subheader("📄 Data Preview")
+    st.dataframe(df.head())
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+    # -----------------------
+    # Basic Stats
+    # -----------------------
+    st.subheader("📈 Summary Statistics")
+    st.write(df.describe())
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+    # -----------------------
+    # Column Selector
+    # -----------------------
+    numeric_columns = df.select_dtypes(include=np.number).columns.tolist()
+    if numeric_columns:
+        selected_col = st.selectbox("Select a column to visualize", numeric_columns)
+        st.line_chart(df[selected_col])
+    else:
+        st.warning("No numeric columns found to visualize.")
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+else:
+    st.info("Please upload a CSV or Excel file to get started.")
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+# -----------------------
+# Footer
+# -----------------------
+st.markdown("---")
+st.caption("Created with ❤️ using Streamlit")
