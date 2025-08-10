@@ -23,7 +23,5 @@ if st.button("Load Data"):
         ORDER BY 	fin.[PERIOD_ID],
         			fin.[VIEW_ID],
         			vw.VIEW_LABEL;"""
-    """
-    
     df = run_query(query)
     st.dataframe(df)
