@@ -1,7 +1,7 @@
 streamlit
 pandas
 plotly
-pyodbc
+pyodbc==4.0.39
 numpy
 openai
 requests
