@@ -1,5 +1,12 @@
 import streamlit as st
-from FinSightx.utils.db import run_query
+import sys
+from pathlib import Path
+# Add this before your other imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Now use either:
+from utils.db import run_query
+#from FinSightx.utils.db import run_query
 
 st.title("📊 Company Dashboard")
 
