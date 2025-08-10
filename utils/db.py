@@ -6,7 +6,7 @@ def get_connection():
     try:
         conn_str =  f"""
             DRIVER=ODBC Driver 18 for SQL Server;
-            SERVER={st.secrets.server};
+            SERVER=l23jvmddsbrerl5c25nljc52oq-3dyzqrdrcf7uxgalftx4qvmqza.datawarehouse.fabric.microsoft.com;
             DATABASE={st.secrets.database};
             UID={st.secrets.username};
             PWD={st.secrets.password};
