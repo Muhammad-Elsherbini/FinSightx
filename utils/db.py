@@ -4,7 +4,7 @@ import streamlit as st
 
 def get_connection():
     conn_str = (
-        f"DRIVER={"ODBC Driver 18 for SQL Server"};"
+        "DRIVER={"ODBC Driver 18 for SQL Server"};"
         f"SERVER={st.secrets['server']};"
         f"DATABASE={st.secrets['database']};"
         f"UID={st.secrets['username']};"
