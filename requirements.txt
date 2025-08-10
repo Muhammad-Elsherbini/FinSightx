@@ -1,6 +1,7 @@
 streamlit
 pandas
 plotly
+pyodbc
 numpy
 openai
 requests
