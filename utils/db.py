@@ -10,7 +10,7 @@ def get_connection():
     try:
         # Load secrets
         server = st.secrets["server"]
-        database = st.secrets["Fdatabase"]
+        database = st.secrets["database"]
         username = st.secrets["username"]
         password = st.secrets["password"]
         driver = "{ODBC Driver 18 for SQL Server}"
