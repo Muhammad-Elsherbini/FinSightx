@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.db import run_query
+from FinSightx.utils.db import run_query
 
 st.title("📊 Company Dashboard")
 
