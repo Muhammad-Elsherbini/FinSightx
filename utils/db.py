@@ -5,14 +5,14 @@ import streamlit as st
 def get_connection():
     try:
         conn_str =  f"""
-            DRIVER=ODBC Driver 18 for SQL Server;
-            SERVER=l23jvmddsbrerl5c25nljc52oq-3dyzqrdrcf7uxgalftx4qvmqza.datawarehouse.fabric.microsoft.com;
-            DATABASE={st.secrets.database};
-            UID={st.secrets.username};
-            PWD={st.secrets.password};
+            DRIVER={st.secrets.connections.fabric.driver};
+            SERVER={st.secrets.connections.fabric.server};
+            DATABASE={st.secrets.connections.fabric.database};
+            UID={st.secrets.connections.fabric.username};
+            PWD={st.secrets.connections.fabric.password};
             Encrypt=yes;
-            TrustServerCertificate=no;
-        """
+            TrustServerCertificate=no;"""
+        
         return pyodbc.connect(conn_str)
     except Exception as e:
         st.error(f"Connection failed: {str(e)}")
