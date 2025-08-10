@@ -2,6 +2,7 @@ streamlit
 pandas
 plotly
 pyodbc==4.0.39
+pymssql
 numpy
 openai
 requests
