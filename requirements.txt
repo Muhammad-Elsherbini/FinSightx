@@ -6,3 +6,4 @@ openai
 requests
 sqlalchemy
 psycopg2-binary
+azure-identity
