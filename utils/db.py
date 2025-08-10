@@ -15,7 +15,7 @@ def get_connection():
         password = st.secrets["fabric"]["password"]
         conn = pymssql.connect(
             server=server,
-            user=user,
+            user=username,
             password=password,
             database=database,
             as_dict=False  # or True if you want dict rows
