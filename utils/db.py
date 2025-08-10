@@ -16,6 +16,7 @@ def get_connection():
         return pyodbc.connect(conn_str)
     except Exception as e:
         st.error(f"Connection failed: {str(e)}")
+        print('error')
         return None
 def run_query(query):
     conn = get_connection()
