@@ -25,7 +25,7 @@ def get_connection():
             "Encrypt=yes;"
             "TrustServerCertificate=no;"  # Recommended: set to 'no' and ensure TLS
         )
-
+        print('this is the connstring:',connection_string)
         conn = pyodbc.connect(connection_string)
         st.success("✅ Connected to Fabric Warehouse!", icon="✅")
         return conn
